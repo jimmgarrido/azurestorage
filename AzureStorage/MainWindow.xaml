@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"  
-        x:Class="WpfApplication1.MainWindow"
-        Title="Azure Storage" Height="768" Width="1440"
+        x:Class="AzureStorage.MainWindow"
+        Height="768" Width="1440"
         EnableDWMDropShadow="True"
     Background="#505050" d:DataContext="{d:DesignData /SampleData/containers/containers.xaml}">
     <controls:MetroWindow.WindowCommands>
@@ -14,16 +14,23 @@
     </controls:MetroWindow.WindowCommands>
 
     <Grid Margin="0,0,0,0">
-        <Label FontSize="42.667" Foreground="White" Content="Jimmy Garrido" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontFamily="Segoe WP Light" />
-        <TreeView HorizontalAlignment="Left" Height="191.786" Margin="110.169,150.947,0,0" VerticalAlignment="Top" Width="240.859">
-            <ListBoxItem/>
-            <Button/>
-        </TreeView>
-        <ListView HorizontalAlignment="Left" Height="230" Margin="832,280,0,0" VerticalAlignment="Top" Width="252" ItemsSource="{Binding Collection}">
-            <ListViewItem Content="{Binding Property1}">
-
-            </ListViewItem>
-        </ListView>
+        <Label FontSize="42.667" Foreground="White" Content="Azure Storage" HorizontalAlignment="Left" Margin="23,0,0,0" VerticalAlignment="Top" FontFamily="Segoe WP Light" />
+        <ListBox Name="containersList" HorizontalAlignment="Left" Height="537.118" Margin="23,181.902,0,0" VerticalAlignment="Top" Width="332.645" ItemsSource="{Binding containerNames}">
+        	<ListBox.Background>
+        		<SolidColorBrush Color="Black" Opacity="0.2"/>
+        	</ListBox.Background>
+            <DataTemplate>
+  
+                <TextBlock Text="{Binding Name}" Height="100" TextWrapping="Wrap" Width="100"/>
+        
+            </DataTemplate>
+        </ListBox>
+        <Label Content="Storage Account" HorizontalAlignment="Left" Margin="23,72,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18.667" FontFamily="Segoe WP SemiLight"/>
+        <TextBox x:Name="accountBox" controls:TextboxHelper.Watermark="ffdsf" HorizontalAlignment="Left" Height="23" Margin="170.55,80.193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138.462" FontFamily="Segoe WP" FontSize="13.333"/>
+        <Label Content="Access Key" HorizontalAlignment="Left" Margin="331.138,73.436,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18.667" FontFamily="Segoe WP SemiLight"/>
+        <TextBox x:Name="keyBox" controls:TextboxHelper.Watermark="ffdsf" HorizontalAlignment="Left" Height="23" Margin="433.195,80.193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138.462" FontFamily="Segoe WP" FontSize="13.333"/>
+        <Button x:Name="login" Content="Go" HorizontalAlignment="Left" Margin="601.385,80.353,0,0" VerticalAlignment="Top" Width="75" FontFamily="Segoe WP Semibold" Background="#4C000000" SnapsToDevicePixels="True" BorderBrush="#FF00ABEC" BorderThickness="1" Foreground="White" Click="login_Click_1"/>
+        <ListBox HorizontalAlignment="Left" Height="100" Margin="444.877,197.877,0,0" VerticalAlignment="Top" Width="100" Background="#4C000000"/>
 
     </Grid>
 </controls:MetroWindow>
